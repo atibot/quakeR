@@ -12,18 +12,19 @@ Description: The NOAA Significant Earthquakes dataset has a substantial amount
 License: GPL (>= 3) | file LICENSE
 Encoding: UTF-8
 LazyData: true
-Suggests: 
+Suggests:
     testthat,
     knitr,
     rmarkdown,
     covr,
     stringr
-Imports: 
+Imports:
     dplyr,
     lubridate,
     rlang,
     readr,
-    ggplot2
+    ggplot2,
+    leaflet
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr
 URL: https://github.com/vadimus202/quakeR

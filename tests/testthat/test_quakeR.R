@@ -49,3 +49,31 @@ test_that("ggplot geoms work",{
   expect_is(g + geom_timeline() + geom_timeline_label(), "ggplot")
   expect_is(g + geom_timeline() + theme_timeline(), "ggplot")
 })
+
+
+
+context("Test leaflet maps")
+
+test_that("ggplot leaflet maps work",{
+  library(dplyr)
+
+  leaf_data <-
+    raw_data %>%
+    eq_clean_data() %>%
+    dplyr::filter(COUNTRY == "MEXICO",
+                  lubridate::year(DATE) >= 2000)
+
+  leaf <-
+    leaf_data %>%
+    eq_map()
+
+
+  expect_is(eq_map(leaf_data), "leaflet")
+  expect_is(eq_map(leaf_data, annot_col = "EQ_PRIMARY"), "leaflet")
+  expect_error(eq_map(leaf_data, annot_col = "JUNK"),
+               "Annotation column 'JUNK' not in the data.")
+
+  expect_is(eq_map(eq_map_add_popup(leaf_data), annot_col = "popup_text"),
+            "leaflet")
+
+})

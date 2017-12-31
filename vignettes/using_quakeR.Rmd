@@ -43,7 +43,7 @@ raw_data <- readr::read_delim(filename, delim = "\t")
 
 ## Functions
 
-### Clean Dats
+### Clean Data
 
 Takes raw NOAA data frame and returns a clean data frame. The clean data frame has the following: A date column created by uniting the year, month, day and converting it to the Date class LATITUDE and LONGITUDE columns converted to numeric class.
 
@@ -65,13 +65,13 @@ A geom for ggplot2 called `geom_timeline()` is used for plotting a time line of 
 library(ggplot2)
 library(stringr)
 
-plot_data <- 
+time_data <- 
   clean_data %>% 
   mutate_at(vars(DEATHS, EQ_PRIMARY), as.numeric) %>% 
   filter(str_detect(str_to_lower(COUNTRY), "china|usa$|pakistan")) %>%
   filter(DATE >= "2000-01-01")
 
-plot_data %>% 
+time_data %>% 
   ggplot(aes(x = DATE,
              y = COUNTRY,
              size = EQ_PRIMARY,
@@ -83,7 +83,7 @@ plot_data %>%
 Add labels to largest earthquakes.
 
 ```{r fig.width=7}
-plot_data %>% 
+time_data %>% 
     ggplot(aes(x = DATE, y = COUNTRY))+
     geom_timeline(aes(size = DEATHS, fill = EQ_PRIMARY))+
     geom_timeline_label(aes(label = LOCATION_NAME, 
@@ -93,4 +93,33 @@ plot_data %>%
 
 ```
 
+
+### Earthquake Maps
+
+The function called `eq_map()` takes an argument data containing the filtered data frame with earthquakes to visualize. The function maps the epicenters (LATITUDE/LONGITUDE) and annotates each point with in pop up window containing annotation data stored in a column of the data frame. The user can choose which column is used for the annotation in the pop-up with a function argument named `annot_col`. Each earthquake is shown with a circle, and the radius of the circle is proportional to the earthquake’s magnitude (`EQ_PRIMARY`). 
+
+
+```{r fig.width=7}
+map_data <-
+  raw_data %>%
+  eq_clean_data() %>%
+  dplyr::filter(COUNTRY == "MEXICO",
+                lubridate::year(DATE) >= 2000)
+
+eq_map(map_data, annot_col = "LOCATION_NAME")
+```
+
+
+The function called `eq_create_label()` takes the dataset as an argument and creates an HTML label that can be used as the annotation text in the leaflet map. This function puts together a character string for each earthquake that will show the cleaned location (as cleaned by the `eq_location_clean()` function, the magnitude (`EQ_PRIMARY`), and the total number of deaths (`TOTAL_DEATHS`), with boldface labels for each (“Location”, “Total deaths”, and “Magnitude”). If an earthquake is missing values for any of these, both the label and the value are skipped for that element of the tag. Your code can be used in the following way:
+
+```{r fig.width=7}
+map_data <-
+  raw_data %>%
+  eq_clean_data() %>%
+  dplyr::filter(COUNTRY == "MEXICO",
+                lubridate::year(DATE) >= 2000) %>% 
+  eq_map_add_popup()
+
+eq_map(map_data, annot_col = "popup_text")
+```
 
