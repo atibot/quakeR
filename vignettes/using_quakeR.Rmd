@@ -57,3 +57,23 @@ clean_data %>%
   head()
 ```
 
+### Plot Earthquake Timelines
+
+A geom for ggplot2 called `geom_timeline()` is used for plotting a time line of earthquakes ranging from xmin to xmax dates with a point for each earthquake. Optional aesthetics include color, size, and alpha (for transparency). The x aesthetic is a date and an optional y aesthetic is a factor indicating some stratification in which case multiple time lines will be plotted for each level of the factor (e.g. country).
+
+```{r fig.width=7, message=FALSE, warning=FALSE}
+library(ggplot2)
+library(stringr)
+
+clean_data %>% 
+  mutate_at(vars(DEATHS, EQ_PRIMARY), as.numeric) %>% 
+  filter(str_detect(str_to_lower(COUNTRY), "china|usa$|pakistan")) %>%
+  filter(DATE >= "2000-01-01") %>% 
+  ggplot(aes(x = DATE,
+             y = COUNTRY,
+             size = EQ_PRIMARY,
+             fill = DEATHS))+
+  geom_timeline()+
+  theme_timeline()
+```
+

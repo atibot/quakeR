@@ -14,8 +14,7 @@ knitr::opts_chunk$set(
 ```
 
 [![Travis build status](https://travis-ci.org/vadimus202/quakeR.svg?branch=master)](https://travis-ci.org/vadimus202/quakeR)
-
-  [![Coverage status](https://codecov.io/gh/vadimus202/quakeR/branch/master/graph/badge.svg)](https://codecov.io/github/vadimus202/quakeR?branch=master)
+[![Coverage status](https://codecov.io/gh/vadimus202/quakeR/branch/master/graph/badge.svg)](https://codecov.io/github/vadimus202/quakeR?branch=master)
   
   
   

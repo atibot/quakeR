@@ -16,11 +16,14 @@ Suggests:
     testthat,
     knitr,
     rmarkdown,
-    covr
-Imports: dplyr,
+    covr,
+    stringr
+Imports: 
+    dplyr,
     lubridate,
     rlang,
-    readr
+    readr,
+    ggplot2
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr
 URL: https://github.com/vadimus202/quakeR

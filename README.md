@@ -1,8 +1,6 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![Travis build status](https://travis-ci.org/vadimus202/quakeR.svg?branch=master)](https://travis-ci.org/vadimus202/quakeR)
-
-[![Coverage status](https://codecov.io/gh/vadimus202/quakeR/branch/master/graph/badge.svg)](https://codecov.io/github/vadimus202/quakeR?branch=master)
+[![Travis build status](https://travis-ci.org/vadimus202/quakeR.svg?branch=master)](https://travis-ci.org/vadimus202/quakeR) [![Coverage status](https://codecov.io/gh/vadimus202/quakeR/branch/master/graph/badge.svg)](https://codecov.io/github/vadimus202/quakeR?branch=master)
 
 Intro
 -----
