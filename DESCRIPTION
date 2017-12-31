@@ -12,10 +12,11 @@ Description: The NOAA Significant Earthquakes dataset has a substantial amount
 License: GPL (>= 3) | file LICENSE
 Encoding: UTF-8
 LazyData: true
-Suggests:
+Suggests: 
     testthat,
     knitr,
-    rmarkdown
+    rmarkdown,
+    covr
 Imports: dplyr,
     lubridate,
     rlang,
