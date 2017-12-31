@@ -13,6 +13,12 @@ knitr::opts_chunk$set(
 )
 ```
 
+[![Travis build status](https://travis-ci.org/vadimus202/quakeR.svg?branch=master)](https://travis-ci.org/vadimus202/quakeR)
+
+  [![Coverage status](https://codecov.io/gh/vadimus202/quakeR/branch/master/graph/badge.svg)](https://codecov.io/github/vadimus202/quakeR?branch=master)
+  
+  
+  
 ## Intro
 
 The package `quakeR` is designed for working with the NOAA Significant Earthquakes dataset. The dataset has a substantial amount of information that is not immediately accessible to people without knowledge of the intimate details of the dataset or of R. This package provides the tools for processing and visualizing the data so that others may extract some use out of the information embedded within.
