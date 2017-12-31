@@ -22,3 +22,5 @@ Imports: dplyr,
     readr
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr
+URL: https://github.com/vadimus202/quakeR
+BugReports: https://github.com/vadimus202/quakeR/issues
