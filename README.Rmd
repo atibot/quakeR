@@ -24,6 +24,12 @@ The package `quakeR` is designed for working with the NOAA Significant Earthquak
 
 For more info, please read the **"Introduction to the quakeR package"** vignette.
 
+## Installation
+```{r, eval=FALSE}
+devtools::install_github("vadimus202/quakeR", build_vignettes = TRUE)
+```
+
+
 ## The Data
 
 This project is centered around a dataset obtained from the U.S. National Oceanographic and Atmospheric Administration (NOAA) on significant earthquakes around the world. This dataset contains information about 5,933 earthquakes over an approximately 4,000 year time span.

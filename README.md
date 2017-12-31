@@ -9,6 +9,13 @@ The package `quakeR` is designed for working with the NOAA Significant Earthquak
 
 For more info, please read the **"Introduction to the quakeR package"** vignette.
 
+Installation
+------------
+
+``` r
+devtools::install_github("vadimus202/quakeR", build_vignettes = TRUE)
+```
+
 The Data
 --------
 
