@@ -2,12 +2,17 @@
 % Please edit documentation in R/ggplot_geoms.R
 \name{geom_timeline}
 \alias{geom_timeline}
+\alias{geom_timeline_label}
 \alias{theme_timeline}
 \title{Plot earthquake timelines}
 \usage{
 geom_timeline(mapping = NULL, data = NULL, stat = "identity",
   position = "identity", na.rm = TRUE, show.legend = NA,
   inherit.aes = TRUE, ...)
+
+geom_timeline_label(mapping = NULL, data = NULL, stat = "identity",
+  position = "identity", ..., na.rm = TRUE, n_max = NULL,
+  show.legend = NA, inherit.aes = TRUE)
 
 theme_timeline(base_size = 12, base_family = "")
 }
@@ -54,17 +59,32 @@ often aesthetics, used to set an aesthetic to a fixed value, like
 \code{color = "red"} or \code{size = 3}. They may also be parameters
 to the paired geom/stat.}
 
+\item{n_max}{an optional integer to label n_max number of largest (by
+magnitude) earthquakes.}
+
 \item{base_size}{base font size}
 
 \item{base_family}{base font family}
 }
 \description{
-This geom for ggplot2 is used for plotting a time line of
+\code{geom_timeline()} adds the timeline geom to a ggplot2 plot,
+  \code{geom_timeline_label()} adds labels to the largest earthquakes, and
+  \code{theme_timeline()} applies formatting to timeline plots. See
+  "Details".
+}
+\details{
+\code{geom_timeline()} is a ggplot2 geom for plotting a time line of
   earthquakes ranging from xmin to xmax dates with a point for each
   earthquake. Optional aesthetics include color, size, and alpha (for
   transparency). The x aesthetic is a date and an optional y aesthetic is a
   factor indicating some stratification in which case multiple time lines
   will be plotted for each level of the factor (e.g. country).
+
+\code{geom_timeline_label()} is used for adding annotations to the
+  earthquake data. This geom adds a vertical line to each data point with a
+  text annotation (e.g. the location of the earthquake) attached to each
+  line. Aesthetics are x, which is the date of the earthquake and label which
+  takes the column name from which annotations will be obtained.
 }
 \examples{
 library(ggplot2)
@@ -86,6 +106,9 @@ clean_data \%>\%
              size = EQ_PRIMARY,
              fill = DEATHS))+
   geom_timeline()+
+  geom_timeline_label(aes(label = LOCATION_NAME,
+                          n_max_var = DEATHS),
+                      n_max = 5)+
   theme_timeline()
 
 }

@@ -2,6 +2,7 @@
 
 export(eq_clean_data)
 export(geom_timeline)
+export(geom_timeline_label)
 export(theme_timeline)
 importFrom(dplyr,"%>%")
 importFrom(dplyr,everything)

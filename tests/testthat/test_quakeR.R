@@ -46,5 +46,6 @@ test_that("ggplot geoms work",{
                fill = DEATHS))
 
   expect_is(g + geom_timeline(), "ggplot")
+  expect_is(g + geom_timeline() + geom_timeline_label(), "ggplot")
   expect_is(g + geom_timeline() + theme_timeline(), "ggplot")
 })

@@ -65,10 +65,13 @@ A geom for ggplot2 called `geom_timeline()` is used for plotting a time line of 
 library(ggplot2)
 library(stringr)
 
-clean_data %>% 
+plot_data <- 
+  clean_data %>% 
   mutate_at(vars(DEATHS, EQ_PRIMARY), as.numeric) %>% 
   filter(str_detect(str_to_lower(COUNTRY), "china|usa$|pakistan")) %>%
-  filter(DATE >= "2000-01-01") %>% 
+  filter(DATE >= "2000-01-01")
+
+plot_data %>% 
   ggplot(aes(x = DATE,
              y = COUNTRY,
              size = EQ_PRIMARY,
@@ -76,4 +79,18 @@ clean_data %>%
   geom_timeline()+
   theme_timeline()
 ```
+
+Add labels to largest earthquakes.
+
+```{r fig.width=7}
+plot_data %>% 
+    ggplot(aes(x = DATE, y = COUNTRY))+
+    geom_timeline(aes(size = DEATHS, fill = EQ_PRIMARY))+
+    geom_timeline_label(aes(label = LOCATION_NAME, 
+                        n_max_var = DEATHS), 
+                        n_max = 5)+
+  theme_timeline()
+
+```
+
 
