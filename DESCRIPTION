@@ -1,0 +1,24 @@
+Package: quakeR
+Type: Package
+Title: Package for working with the NOAA Significant Earthquakes dataset
+Version: 0.1.0
+Author: Vadim Bondarenko
+Maintainer: Vadim Bondarenko <yourself@somewhere.net>
+Description: The NOAA Significant Earthquakes dataset has a substantial amount 
+  of information that is not immediately accessible to people without knowledge 
+  of the intimate details of the dataset or of R. 
+  This package provides the tools for processing and visualizing the data so that 
+  others may extract some use out of the information embedded within.
+License: GPL (>= 3) | file LICENSE
+Encoding: UTF-8
+LazyData: true
+Suggests:
+    testthat,
+    knitr,
+    rmarkdown
+Imports: dplyr,
+    lubridate,
+    rlang,
+    readr
+RoxygenNote: 6.0.1
+VignetteBuilder: knitr
